@@ -10,7 +10,7 @@ de "Hera Syndulla";
 d) Listar todos los personajes que comienzan con la letra L;
 """
 
-lista_star_wars = ["Luke Skywalker", "Aayla Secura", "Ackbar", "Adi Gallia", 
+lista_star_wars = ["Luke Skywalker", "Hera Syndulla", "Aayla Secura", "Ackbar", "Adi Gallia", 
 "Agen Kolar", "Agrippa Aldrete", "Ahsoka Tano", "Anakin Skywalker", 
 "Anakin Solo", "Asajj Ventress", "Ask Aak", "Attichitcuk", "Atton Rand", 
 "Aurra Sing", "Bail Prestor Organa", "Bastila Shan", "BB-8", 
@@ -55,9 +55,9 @@ def seleccion(lista) :
 
         lista[i], lista[minimo] = lista[minimo], lista[i]
 
-print(lista_star_wars)
 seleccion(lista_star_wars)
 print(lista_star_wars)
+print(" ")
 
 """
 b) Determinar si el personaje "Darth Maul" está cargado y en qué posición se
@@ -82,8 +82,48 @@ def binaria(lista, buscado) :
 
     return posicion
 
-posicion = binaria(lista_star_wars, "Darth Maul")
+posicion_1 = binaria(lista_star_wars, "Darth Maul")
 
-print(f"Darth Maul está cargado en la qué posición {posicion}")
+print(f"Darth Maul está cargado en la qué posición {posicion_1}")
+print(" ")
 
+"""
+c) Mostrar la información de los personajes que se encuentran antes y después
+de "Hera Syndulla";
+"""
+def binaria(lista, buscado) :
+    """ Metodo de busqueda binaria """
+    posicion = -1
+    primero = 0
+    ultimo = len(lista) - 1
 
+    while (primero <= ultimo) and (posicion == -1) :
+        medio = (primero + ultimo) // 2
+
+        if (lista[medio] == buscado) :
+            posicion = medio
+        else :
+            if (buscado < lista[medio]) :
+                ultimo = medio - 1
+            else :
+                primero = medio + 1
+
+    return posicion
+
+posicion_2 = binaria(lista_star_wars, "Hera Syndulla")
+
+print(f"""Los personajes que se encuentran antes y después de 
+      Hera Syndulla son 
+      {lista_star_wars[posicion_2-1]}, 
+      {lista_star_wars[posicion_2+1]}""")
+print(" ")
+
+# d) Listar todos los personajes que comienzan con la letra L;
+listaL = []
+
+for personaje in lista_star_wars:
+    
+    if(personaje[0]=="L"):
+        listaL.append(personaje)
+
+print(listaL)
